@@ -1,0 +1,13 @@
+var _react = require('react');
+
+var _react2 = babelHelpers.interopRequireDefault(_react);
+
+var _reactNative = require('react-native');
+
+var _App = require('./App');
+
+var _App2 = babelHelpers.interopRequireDefault(_App);
+
+_reactNative.AppRegistry.registerComponent('DemoApp', function () {
+  return _App2.default;
+});

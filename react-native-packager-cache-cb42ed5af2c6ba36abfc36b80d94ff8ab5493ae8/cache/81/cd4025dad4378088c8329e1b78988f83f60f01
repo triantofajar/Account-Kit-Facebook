@@ -1,0 +1,72 @@
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var _jsxFileName = '/home/fajar/DemoApp/App.js';
+
+var _react = require('react');
+
+var _react2 = babelHelpers.interopRequireDefault(_react);
+
+var _reactNative = require('react-native');
+
+var _reactNativeFbsdk = require('react-native-fbsdk');
+
+var _reactNativeFbsdk2 = babelHelpers.interopRequireDefault(_reactNativeFbsdk);
+
+var LoginButton = _reactNativeFbsdk2.default.LoginButton,
+    AccessToken = _reactNativeFbsdk2.default.AccessToken;
+
+var App = function (_Component) {
+    babelHelpers.inherits(App, _Component);
+
+    function App() {
+        babelHelpers.classCallCheck(this, App);
+        return babelHelpers.possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
+    }
+
+    babelHelpers.createClass(App, [{
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                _reactNative.View,
+                { style: { flex: 1, justifyContent: 'center', alignItems: 'center' }, __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 14
+                    }
+                },
+                _react2.default.createElement(
+                    _reactNative.Text,
+                    { style: { fontSize: 25, marginBottom: 15 }, __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 15
+                        }
+                    },
+                    'Please Log in'
+                ),
+                _react2.default.createElement(LoginButton, {
+                    publishPermissions: ["publish_actions"],
+                    onLoginFinished: function onLoginFinished(error, result) {
+                        if (error) {
+                            alert("login has error: " + result.error);
+                        } else if (result.isCancelled) {
+                            alert("login is cancelled.");
+                        } else {
+                            AccessToken.getCurrentAccessToken().then(function (data) {
+                                alert(data.accessToken.toString());
+                            });
+                        }
+                    },
+                    onLogoutFinished: function onLogoutFinished() {
+                        return alert("logout.");
+                    }, __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 16
+                    }
+                })
+            );
+        }
+    }]);
+    return App;
+}(_react.Component);
+
+exports.default = App;
